@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css"/>
+  <style>
+    #results {
+      margin-left: 520px;
+    }
+
+    #input {
+      margin-top: 50px;
+    }
+
+    .size {
+      font-size: 120%;
+      font-weight: bold;
+      color : blue;
+    }
+
+    .dynamic {
+      color : brown;
+    }
+  </style>
+</head>
+<body>
+<div class="ui one column center aligned grid position" id="input" >
+  <div class="column seven wide form-holder">
+    <h2 class="center aligned header form-head">Enter the Id to find the restaurant</h2>
+    <input type='number' id='city' />
+    <input type='submit' class="ui button primary" value='search' id='search' />
+  </div>
+</div>
+
+<div id="results"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js'></script>
+  <script src="js/script.js"></script>
+
+  <script type='text/javascript' id="template">
+        <div class="ui link cards">
+            <div class="card">
+              <div class="image">
+                <img src=${restaurant.featured_image}>
+              </div>
+              <div class="content">
+                <div class="header">${restaurant.name}</div>
+                <div class="meta">
+                </div>
+              <div class="description">
+                  <span class='size'>Cuisines : </span><span class='dynamic'>${restaurant.cuisines}</span>
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated">
+                  <span class='size'>Address : </span><span class='dynamic'>${restaurant.location.address}</span>
+                </span>
+                <span>
+                   <span class='size'>Ratings : </span><span class='dynamic'>${restaurant.user_rating.aggregate_rating} star</span>
+                </span>
+              </div>
+            </div>
+        </div>
+
+  </script>
+</body>
+</html>
